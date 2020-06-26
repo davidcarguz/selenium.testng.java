@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="testSuite" verbose="2">
+    <test name="Regresion">
+        <parameter name="username" value="Admin"/>
+        <parameter name="password" value="admin123"/>
+        <groups>
+            <define name="wrong_login">
+                <include name="wrong_credentials"/>
+            </define>
+            <run>
+                <include name="wrong_login"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="step_definitions.LoginSteps"/>
+        </classes>
+    </test>
+</suite>
