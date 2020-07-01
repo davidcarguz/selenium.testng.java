@@ -7,8 +7,9 @@
             <define name="wrong_login">
                 <include name="wrong_credentials"/>
             </define>
+            <define name="all"/>
             <run>
-                <include name="wrong_login"/>
+                <include name="all"/>
             </run>
         </groups>
         <classes>

@@ -7,7 +7,7 @@ import pages.Login;
 
 public class LoginSteps extends Hooks{
 
-    @Test
+    @Test(groups = {"all"})
     @Parameters({"username","password"})
     public void successfulLogin(String username, String password){
         Login login = new Login(getDriver());
@@ -18,7 +18,7 @@ public class LoginSteps extends Hooks{
         home.checkDashboardIsPresent();
     }
 
-    @Test(groups = "wrong_credentials", dataProvider = "login_credentials", dataProviderClass = core.DataProviderStack.class)
+    @Test(groups = {"wrong_credentials","all"}, dataProvider = "login_credentials", dataProviderClass = core.DataProviderStack.class)
     public void wrongCredentialsLogin(String username, String password){
         Login login = new Login(getDriver());
         login.enterUsername(username)
@@ -27,7 +27,7 @@ public class LoginSteps extends Hooks{
                 .checkWrongCredentialsMessage();
     }
 
-    @Test(groups = "wrong_credentials")
+    @Test(groups = {"wrong_credentials","all"})
     public void loginWithNoCredentials(){
         Login login = new Login(getDriver());
         login.enterUsername("")
