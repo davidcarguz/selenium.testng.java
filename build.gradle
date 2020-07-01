@@ -13,4 +13,5 @@ dependencies {
     testImplementation 'org.testng:testng:7.1.0'
     testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     testImplementation 'io.github.bonigarcia:webdrivermanager:4.0.0'
+    testImplementation 'com.aventstack:extentreports:4.1.7'
 }

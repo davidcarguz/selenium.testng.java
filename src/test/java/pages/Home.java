@@ -6,8 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import step_definitions.Hooks;
 
-public class Home {
+public class Home extends Hooks {
 
     WebDriver driver;
 
@@ -25,8 +26,10 @@ public class Home {
     public void checkDashboardIsPresent(){
         try {
             Assert.assertTrue(lbl_Dashboard.isDisplayed());
+            test.pass("successful login.");
         }catch(Exception e){
             final String ERROR_MESSAGE = "there was an error finding dashboard label";
+            test.fail("there was a problem with the login.");
             throw new Error(ERROR_MESSAGE,e);
         }
     }

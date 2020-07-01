@@ -7,7 +7,7 @@ import pages.Login;
 
 public class LoginSteps extends Hooks{
 
-    @Test(groups = {"all"})
+    @Test(groups = {"all","right"})
     @Parameters({"username","password"})
     public void successfulLogin(String username, String password){
         Login login = new Login(getDriver());
