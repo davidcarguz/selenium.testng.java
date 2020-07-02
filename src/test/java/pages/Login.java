@@ -1,14 +1,14 @@
 package pages;
 
-import core.ReportManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import step_definitions.Hooks;
 
-public class Login extends ReportManager {
+public class Login extends Hooks {
 
     WebDriver driver;
 
@@ -35,7 +35,7 @@ public class Login extends ReportManager {
         try {
             edt_Username.clear();
             edt_Username.sendKeys(username);
-            test.info("fill username field with username: "+username);
+            test.info("fill username field with username: "+username,takeStepScreenshot(driver,"insert_username",testName));
         }catch(Exception e){
             final String ERROR_MESSAGE = "there was a problem filling username";
             throw new Error(ERROR_MESSAGE,e);
@@ -52,7 +52,7 @@ public class Login extends ReportManager {
         try {
             edt_Password.clear();
             edt_Password.sendKeys(password);
-            test.info("fill password field with password: "+password);
+            test.info("fill password field with password: "+password,takeStepScreenshot(driver,"insert_password",testName));
         }catch(Exception e){
             final String ERROR_MESSAGE = "there was a problem filling password";
             throw new Error(ERROR_MESSAGE,e);
@@ -67,7 +67,7 @@ public class Login extends ReportManager {
     public Login clickLoginButton(){
         try {
             btn_Login.click();
-            test.info("click on login button,");
+            test.info("click on login button,",takeStepScreenshot(driver,"click_on_button",testName));
         }catch(Exception e){
             final String ERROR_MESSAGE = "there was a problem clicking login button";
             throw new Error(ERROR_MESSAGE,e);
@@ -78,7 +78,7 @@ public class Login extends ReportManager {
     public void checkWrongCredentialsMessage(){
         try{
             Assert.assertTrue(lbl_WrongCredentials.isDisplayed());
-            test.pass("login validation succesful.");
+            test.pass("login validation succesful.",takeStepScreenshot(driver,"wrong_credentials_sucessful",testName));
         }catch(Exception|AssertionError e){
             final String ERROR_MESSAGE = "Login with wrong credentials is not working";
             test.fail("There was a problem with the login validation.");

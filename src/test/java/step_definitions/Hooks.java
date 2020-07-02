@@ -7,11 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks extends ReportManager {
 
     private WebDriver driver;
+    public static String testName = "";
 
     @BeforeClass(alwaysRun = true)
     public void suiteSetup(){
@@ -20,13 +22,14 @@ public class Hooks extends ReportManager {
 
     @BeforeMethod(alwaysRun = true)
     public void setupTest(ITestResult method) {
-        setupTest(method.getMethod().getMethodName());
+        testName = method.getMethod().getMethodName();
+        setupTest(testName);
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://opensource-demo.orangehrmlive.com/");
-        test.info("Open Browser in HomePage",takeStepScreenshot(driver,"navigate_to_page"));
+        test.info("Open Browser in HomePage",takeStepScreenshot(driver,"navigate_to_page",testName));
     }
 
     @AfterMethod(alwaysRun = true)

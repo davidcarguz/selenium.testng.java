@@ -28,15 +28,17 @@ public class ReportManager {
         test = report.createTest(testName);
     }
 
-    public static MediaEntityModelProvider takeStepScreenshot(WebDriver driver,String filename) {
+    public static MediaEntityModelProvider takeStepScreenshot(WebDriver driver,String filename,String testName) {
+        File testfolder = new File("reports\\testName");
+        testfolder.mkdir();
         MediaEntityModelProvider mediaModel = null;
         TakesScreenshot screenshot = ((TakesScreenshot) driver);
         File srcImage = screenshot.getScreenshotAs(OutputType.FILE);
-        String filepath = "reports\\"+filename+".png";
+        String filepath = "reports\\"+testName+"\\"+filename+".png";
         File destFile = new File(filepath);
         try {
             FileUtils.copyFile(srcImage, destFile);
-            mediaModel = MediaEntityBuilder.createScreenCaptureFromPath(filename+".png").build();
+            mediaModel = MediaEntityBuilder.createScreenCaptureFromPath(testName+"\\"+filename+".png").build();
         }catch (Exception e){
             e.printStackTrace();
         }
