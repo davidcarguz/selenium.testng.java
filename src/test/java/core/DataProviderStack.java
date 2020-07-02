@@ -8,8 +8,6 @@ public class DataProviderStack {
     public Object[][] getCredentials(){
         return new Object[][] {
                 {"Admin","Admin"},
-                {"asdasdasd","010293953"},
-                {"admin23","admin123"}
         };
     }
 }

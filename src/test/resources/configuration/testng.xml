@@ -8,6 +8,7 @@
                 <include name="wrong_credentials"/>
             </define>
             <define name="all"/>
+            <define name="right"/>
             <run>
                 <include name="all"/>
             </run>
