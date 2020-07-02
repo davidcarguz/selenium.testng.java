@@ -10,7 +10,7 @@
             <define name="all"/>
             <define name="right"/>
             <run>
-                <include name="all"/>
+                <include name="right"/>
             </run>
         </groups>
         <classes>

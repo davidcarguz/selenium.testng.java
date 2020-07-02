@@ -1,5 +1,7 @@
 package pages;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.MediaEntityModelProvider;
 import core.ReportManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +28,7 @@ public class Home extends ReportManager {
     public void checkDashboardIsPresent(){
         try {
             Assert.assertTrue(lbl_Dashboard.isDisplayed());
-            test.pass("successful login.");
+            test.pass("successful login.",takeStepScreenshot(driver,"succesful_login"));
         }catch(Exception e){
             final String ERROR_MESSAGE = "there was an error finding dashboard label";
             test.fail("there was a problem with the login.");

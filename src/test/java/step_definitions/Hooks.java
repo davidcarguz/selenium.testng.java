@@ -1,15 +1,9 @@
 package step_definitions;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import core.ReportManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -32,7 +26,7 @@ public class Hooks extends ReportManager {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://opensource-demo.orangehrmlive.com/");
-        test.info("Open Browser in HomePage");
+        test.info("Open Browser in HomePage",takeStepScreenshot(driver,"navigate_to_page"));
     }
 
     @AfterMethod(alwaysRun = true)
