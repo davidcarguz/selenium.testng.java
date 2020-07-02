@@ -1,14 +1,14 @@
 package pages;
 
+import core.ReportManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import step_definitions.Hooks;
 
-public class Home extends Hooks {
+public class Home extends ReportManager {
 
     WebDriver driver;
 
